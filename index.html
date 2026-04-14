@@ -82,11 +82,17 @@
             margin: 20px;
             padding: 20px;
             border-radius: 15px;
-            width: 250px;
+            width: 260px;
+            vertical-align: top;
         }
         .price {
             font-size: 2rem;
             color: #ffd93d;
+        }
+        .token-note {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            margin-top: 10px;
         }
         button {
             background: #4ecdc4;
@@ -96,11 +102,26 @@
             cursor: pointer;
             font-weight: bold;
             margin-top: 15px;
+            transition: 0.2s;
+        }
+        button:hover {
+            background: #3ba89f;
         }
         footer {
             margin-top: 60px;
             font-size: 0.8rem;
             opacity: 0.6;
+        }
+        a {
+            color: #eee;
+        }
+        .badge {
+            background: #ff6b6b;
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            margin-left: 10px;
         }
     </style>
 </head>
@@ -110,10 +131,10 @@
         <div class="subtitle">听懂你的声音，匹配你的屏幕，自动播放专属BGM</div>
         
         <a href="#" class="download-btn" id="downloadLink">💿 立即下载 (Windows版)</a>
-        <p style="font-size:0.8rem; opacity:0.7;">v1.0.0 | 70MB | 无需Python环境</p>
+        <p style="font-size:0.8rem; opacity:0.7;">v1.0.0 | 约200MB | 无需Python环境</p>
 
         <div class="features">
-            <div class="feature">🎙️ 智能语音识别<br>无需唤醒词，自然对话</div>
+            <div class="feature">🎙️ 智能语音识别<br>自然对话，无需唤醒词</div>
             <div class="feature">🎬 屏幕情绪感知<br>根据画面节奏自动配乐</div>
             <div class="feature">🎵 本地音乐库<br>保护隐私，免费使用</div>
             <div class="feature">🤖 AI 推荐引擎<br>DeepSeek 理解你的心情</div>
@@ -124,33 +145,60 @@
             <div class="price-card">
                 <h3>免费版</h3>
                 <div class="price">¥0</div>
-                <p>基础语音控制<br>随机播放<br>每日50次识别</p>
-                <button onclick="alert('免费版无需激活，直接下载即可')">下载免费版</button>
+                <p>基础语音控制（关键词匹配）<br>随机播放<br>无限次本地识别</p>
+                <button onclick="alert('免费版无需激活码，直接下载即可')">下载免费版</button>
             </div>
             <div class="price-card">
-                <h3>Pro版</h3>
+                <h3>Pro 首次</h3>
                 <div class="price">¥49</div>
-                <p>无限语音识别<br>屏幕监控<br>AI风格推荐<br>永久更新</p>
+                <p>100 万 token<br>AI 智能解析<br>屏幕监控<br>无限语音识别次数</p>
+                <div class="token-note">🎯 约可调用 5000-10000 次</div>
                 <button onclick="location.href='#buy'">立即购买</button>
             </div>
             <div class="price-card">
-                <h3>直播版</h3>
-                <div class="price">¥99/永久</div>
-                <p>Pro全部功能<br>OBS插件<br>弹幕互动<br>观众点歌</p>
-                <button onclick="location.href='#buy'">联系客服</button>
+                <h3>续充包 <span class="badge">推荐</span></h3>
+                <div class="price">¥19</div>
+                <p>50 万 token<br>直接充值到已有激活码<br>单价更低</p>
+                <button onclick="location.href='#buy'">续费充值</button>
+            </div>
+            <div class="price-card">
+                <h3>大额续充</h3>
+                <div class="price">¥39</div>
+                <p>150 万 token<br>适合重度用户<br>单价仅 0.26 元/万token</p>
+                <button onclick="location.href='#buy'">立即充值</button>
             </div>
         </div>
 
+        <div style="background: rgba(0,0,0,0.2); border-radius: 15px; padding: 20px; margin-top: 20px;">
+            <h3>🔐 关于付费与激活码</h3>
+            <p style="text-align: left; max-width: 800px; margin: auto;">
+                • 免费版无需激活码，直接使用基础功能（关键词换歌、暂停等）。<br>
+                • Pro 版购买后你将收到一个<b>激活码</b>，在软件配置向导中输入即可解锁 AI 功能。<br>
+                • 每次调用 DeepSeek 智能解析会消耗 token（根据返回内容长度），剩余额度可在软件内查看。<br>
+                • 额度用尽后 AI 功能自动降级为免费版，你可以随时购买续充包增加额度。<br>
+                • 激活码永久有效，额度用完不会过期，可多次充值。<br>
+                • 购买方式：联系客服微信（示例）或通过面包多平台支付，支付后我们为你生成激活码。
+            </p>
+        </div>
+
         <footer>
-            © 2026 AI DJ Studio | <a href="#" style="color:#eee;">隐私政策</a> | <a href="#" style="color:#eee;">用户协议</a><br>
+            © 2026 AI DJ Studio | <a href="#">隐私政策</a> | <a href="#">用户协议</a><br>
             备案号：浙ICP备2026010729号-1
         </footer>
     </div>
 
     <script>
-        // 实际下载链接替换为你的网盘或服务器地址
-        document.getElementById('downloadLink').href = '#';
-        // 购买链接可跳转到第三方支付平台（如面包多）
+        // 下载链接替换为你的实际地址
+        document.getElementById('downloadLink').href = 'https://pan.quark.cn/s/你的分享链接';
+        // 购买按钮跳转（可替换为你的面包多链接或客服微信）
+        const btns = document.querySelectorAll('.price-card button');
+        btns.forEach(btn => {
+            if (btn.innerText.includes('购买') || btn.innerText.includes('充值') || btn.innerText.includes('续费')) {
+                btn.onclick = () => {
+                    window.location.href = 'https://afdian.com/@你的店铺'; // 替换为你的支付链接
+                };
+            }
+        });
     </script>
 </body>
 </html>
